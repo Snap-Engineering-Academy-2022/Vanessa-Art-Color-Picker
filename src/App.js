@@ -26,7 +26,6 @@ function App() {
   }, []);
 
   function fetchAllPgs() {
-    // const artDataHelper = [];
     const artDataHelper = new Set();
 
     function fetchOnePg(url) {
@@ -37,11 +36,8 @@ function App() {
           for (let i = 0; i < data.data.length; ++i) {
             // only if the image has a thumbnail and color data
             if (data.data[i].image_id && data.data[i].color)
-              // artDataHelper.push(data.data[i]);
               artDataHelper.add(data.data[i]);
           }
-
-          // console.log("artDataHelper:", artDataHelper);
 
           // Set total number of results pages
           const totalPages = data.pagination.total_pages;
@@ -67,28 +63,31 @@ function App() {
     }
 
     // Fetch X pages of data
-    for (let i = 0; i < 400; ++i) fetchOnePg(nextPageURL);
+    // for (let i = 0; i < 400; ++i) fetchOnePg(nextPageURL);
+
+    // Fetch data until artDataHelper has 3000 items in it
+    while (artDataHelper.size < 3000) fetchOnePg(nextPageURL);
+
+    console.log("artDataHelper", artDataHelper);
 
     // Set artData with artDataHelper data
     setArtData(Array.from(artDataHelper));
   }
 
   console.log("artData", artData);
-  // console.log("image url root:", imgURLRoot);
-  // Convert artworkSet into an array (so I can use map function later)
-  // const artworkArray = Array.from(artworkSet);
 
-  // console.log("artwork array:", artworkArray);
-
+  // function to get the image url for each artwork
   function getImgURL(artwork) {
     return `${imgURLRoot}/${artwork.image_id}/full/843,/0/default.jpg`;
   }
 
+  // function to return scaled image height for each artwork (lesser of 250px or 10% of actual image size)
   function getImgHeight(artwork) {
     if (artwork.thumbnail.height > 2500) return "250";
     else return String(artwork.thumbnail.height * 0.1);
   }
 
+  // Get a subset of artData based on color 
   const artDataColorSubset = [];
   function getArtDataColorSubset(artData, color) {
     for (let i = 0; i < artData.length; ++i) {
