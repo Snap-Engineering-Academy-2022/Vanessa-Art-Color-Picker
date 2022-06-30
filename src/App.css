@@ -1,5 +1,173 @@
+/************************************/
+/* General */
+/************************************/
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap");
 
-.characterButton {
-  /* Why doesn't this work? (See line #104 in App.js for where this class is applied) */
-  border: 5px solid red;
+html {
+  font-size: 62.5% !important;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  box-sizing: border-box;
+  background-color: #fff;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #000;
+  font-family: "Inter", sans-serif;
+  /* margin-left: 10rem;
+  margin-right: 10rem; */
+}
+
+/************************************/
+/* Title Bar */
+/************************************/
+.title-bar {
+  position: fixed;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  align-items: flex-end;
+  padding: 5rem 10rem 10rem 10rem;
+  z-index: 10;
+  margin-top: -21.5rem;
+  transition: margin-top 1s; /* Transition effect when sliding down (and up) */
+}
+
+h1 {
+  font-size: 11rem;
+  font-weight: 700;
+  letter-spacing: -0.55rem;
+  margin-left: 2rem;
+  margin-bottom: -2.5rem;
+}
+
+/************************************/
+/* Color picker */
+/************************************/
+
+.color-picker {
+  width: 8.25rem !important; /* not sure how to set this otherwise -- possibly in sx prop? */
+  height: 8.25rem !important; /* not sure how to set this otherwise -- possibly in sx prop? */
+}
+
+/************************************/
+/* Artwork Grid */
+/************************************/
+
+.artwork-grid-container {
+  margin-top: 21.5rem;
+  padding-top: 6rem;
+  display: flex;
+  justify-content: center;
+}
+
+.artwork-grid {
+  width: 90%;
+}
+
+/************************************/
+/* Card */
+/************************************/
+
+.card-title,
+.card-artist {
+  font-family: "Inter", sans-serif !important;
+  letter-spacing: -0.02rem !important;
+  margin-left: 0.5rem !important;
+}
+
+.card-title {
+  font-size: 1.8rem !important;
+  font-weight: 600 !important;
+}
+
+.card-artist {
+  font-size: 1.4rem !important;
+  font-weight: 500 !important;
+}
+
+/************************************/
+/* Media Queries */
+/************************************/
+
+/* BELOW 600 px */
+
+@media (max-width: 60rem) {
+  h1 {
+    font-size: 9rem;
+    letter-spacing: -0.45rem;
+    margin-bottom: -1.8rem;
+  }
+
+  .color-picker {
+    width: 7.5rem !important;
+    height: 7.5rem !important;
+  }
+
+  .title-bar {
+    padding-bottom: 4rem;
+    margin-top: -18.5rem;
+  }
+  .artwork-grid-container {
+    margin-top: 18.5rem;
+  }
+}
+
+/* BELOW 500 px */
+
+@media (max-width: 50rem) {
+  .title-bar {
+    padding: 5rem 10rem 4rem 7rem;
+  }
+
+  h1 {
+    font-size: 7rem;
+    letter-spacing: -0.35rem;
+    margin-bottom: -1.6rem;
+  }
+
+  .color-picker {
+    width: 6rem !important;
+    height: 6rem !important;
+  }
+
+  .title-bar {
+    margin-top: -16rem;
+  }
+
+  .artwork-grid-container {
+    margin-top: 16rem;
+  }
+}
+
+/* BELOW 400 px */
+
+@media (max-width: 40rem) {
+  .title-bar {
+    padding: 5rem 10rem 3rem 5rem;
+  }
+
+  h1 {
+    font-size: 6rem;
+    letter-spacing: -0.2rem;
+    margin-bottom: -1.1rem;
+  }
+
+  .color-picker {
+    width: 5rem !important;
+    height: 5rem !important;
+  }
+
+  .title-bar {
+    margin-top: -14.25rem;
+  }
+
+  .artwork-grid-container {
+    margin-top: 14.25rem;
+  }
 }
