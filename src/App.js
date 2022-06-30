@@ -7,11 +7,12 @@ import "./App.css";
 import TitleBar from "./TitleBar";
 
 function App() {
+  const urlRoot = 'https://api.artic.edu/api/v1/artworks?limit=10&fields=id,image_id,title,artist_title,artist_display,date_display,color,thumbnail,has_not_been_viewed_much,place_of_origin,medium_display,dimensions,credit_line,is_on_view&page=';
+  
   // Hooks
   const [artData, setArtData] = useState([]);
-  const [nextPageURL, setNextPageURL] = useState(
-    "https://api.artic.edu/api/v1/artworks?limit=10&fields=id,image_id,title,artist_title,artist_display,date_display,color,thumbnail,has_not_been_viewed_much,place_of_origin,medium_display,dimensions,credit_line,is_on_view"
-  );
+  const [nextPageURL, setNextPageURL] = useState(`${urlRoot}1`)
+  
 
   const [imgURLRoot, setImgURLRoot] = useState("");
 
@@ -20,7 +21,7 @@ function App() {
     return artData.length === 0;
   }
 
-  // run isFetching once & only if artData is empty
+  // run fetchAllPgs once & only if artData is empty
   useEffect(() => {
     if (isArtDataEmpty()) fetchAllPgs();
   }, []);
@@ -52,12 +53,12 @@ function App() {
 
           // Function to return a random page link
           function randomPageLink(page) {
-            return `https://api.artic.edu/api/v1/artworks?limit=10&fields=id,image_id,title,artist_title,artist_display,date_display,color,thumbnail,has_not_been_viewed_much,place_of_origin,medium_display,dimensions,credit_line,is_on_view&page=${page}`;
+            
+            return `${urlRoot}${page}`;
           }
 
           // Set image URL root
           setImgURLRoot(data.config.iiif_url);
-
 
         });
     }
@@ -65,8 +66,8 @@ function App() {
     // Fetch X pages of data
     // for (let i = 0; i < 400; ++i) fetchOnePg(nextPageURL);
 
-    // Fetch data until artDataHelper has 3000 items in it
-    while (artDataHelper.size < 3000) fetchOnePg(nextPageURL);
+    // Fetch data until artDataHelper has X items in it
+    while (artDataHelper.size < 10) fetchOnePg(nextPageURL);
 
     console.log("artDataHelper", artDataHelper);
 
