@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/vanessa-art-color-picker/static/css/main.01e6f3ee.css",
+    "main.js": "/vanessa-art-color-picker/static/js/main.31704696.js",
+    "static/js/787.968c7715.chunk.js": "/vanessa-art-color-picker/static/js/787.968c7715.chunk.js",
+    "index.html": "/vanessa-art-color-picker/index.html",
+    "main.01e6f3ee.css.map": "/vanessa-art-color-picker/static/css/main.01e6f3ee.css.map",
+    "main.31704696.js.map": "/vanessa-art-color-picker/static/js/main.31704696.js.map",
+    "787.968c7715.chunk.js.map": "/vanessa-art-color-picker/static/js/787.968c7715.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.01e6f3ee.css",
+    "static/js/main.31704696.js"
+  ]
+}
